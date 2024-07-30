@@ -39,4 +39,12 @@ public class Tarefa implements Observer {
     public void update() {
 
     }
+
+    @Override
+    public String toString() {
+        return "Tarefa{" +
+                "descricao='" + descricao + '\'' +
+                ", completo=" + completo +
+                '}';
+    }
 }

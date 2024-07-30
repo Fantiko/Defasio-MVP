@@ -5,7 +5,6 @@
 package lista_tarefas;
 
 
-import MVP.View;
 import Observer.Observer;
 
 import java.util.List;
@@ -16,13 +15,20 @@ import java.util.Scanner;
  * @author kaios
  */
 public class TarefasView implements Observer {
-    
+
+    public TarefasView() {
+    }
+
     public void mostrarTarefas(List<Tarefa> tarefas){
         //mostrar tarefas
+        System.out.println("----------------------");
         for(Tarefa i : tarefas)
         {
-            System.out.println(i.getDescricao());
+
+            System.out.println(i.toString());
+
         }
+        System.out.println("----------------------");
     }
     
     public String preencherTarefas(){
@@ -31,9 +37,9 @@ public class TarefasView implements Observer {
         return scanner.nextLine();
     }
     public void msgError(String message){
-        System.out.println("A descrição da tarefa não pode ser vazia");
+        System.out.println(message);
     }
-    
+
     public void update(List<Tarefa> tarefas) {
         this.mostrarTarefas(tarefas);
     }

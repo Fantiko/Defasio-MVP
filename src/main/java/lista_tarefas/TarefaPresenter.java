@@ -16,8 +16,9 @@ import java.util.List;
  */
 public class TarefaPresenter extends Observable {
     private final List<Tarefa> tarefas = new ArrayList<>();
-    private TarefasView view;
-    private DataBiding dataBiding;
+    private final TarefasView view;
+    private final DataBiding dataBiding;
+
     public enum DataBiding {
         MODEL_VIEW,
         TWO_WAY,
@@ -29,40 +30,58 @@ public class TarefaPresenter extends Observable {
         this.view = view;
         this.dataBiding = dataBiding;
 
-        switch(dataBiding){
-            case VIEW_MODEL:
-            {
-                //this.addObserver(model);
-            }
+        if (dataBiding == DataBiding.MODEL_VIEW) {
+            this.addObserver(view);
+        }
 
-            case MODEL_VIEW:
-            {
-                this.addObserver(view);
-            }
-
-            case TWO_WAY:
-            {
-
-                //this.addObserver(model);
-                this.addObserver(view);
-            }
 
     }
-    
+
     public void addtarefa() {
         String description = this.view.preencherTarefas();
-        
+
         if (description.isEmpty()) {
             this.view.msgError("A descrição da tarefa não pode ser vazia");
         } else {
-            Tarefa model = tarefas.add(new Tarefa(description));
-            this.view.update(this.tarefas);
-            if (this.dataBiding == DataBiding.TWO_WAY || this.dataBiding == DataBiding.VIEW_MODEL) {
-                this.addObserver(model);
+            tarefas.add(new Tarefa(description));
+
+            switch (dataBiding) {
+                case VIEW_MODEL: {
+                    this.addObserver(tarefas.getLast());
+                }
+
+                case MODEL_VIEW: {
+                    this.view.update(this.tarefas);
+                }
+                case TWO_WAY: {
+                    this.addObserver(tarefas.getLast());
+                    this.view.update(this.tarefas);
+                }
+
+
             }
 
-
         }
-        
     }
+
+    public void removetarefa(Tarefa tarefa) {
+        tarefas.remove(tarefa);
+    }
+
+    public void marcar(String descricao) {
+        for (Tarefa i : this.tarefas) {
+            if (i.getDescricao().equals(descricao)) {
+                i.setCompleto(true);
+            }
+        }
+
+        this.view.update(this.tarefas);
+
+    }
+
+
+
+
+
+
 }

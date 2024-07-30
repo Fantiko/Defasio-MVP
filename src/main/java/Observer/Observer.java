@@ -4,10 +4,16 @@
  */
 package Observer;
 
+import lista_tarefas.Tarefa;
+
+import java.util.List;
+
 /**
  *
  * @author kaios
  */
 public interface Observer {
+
     void update();
+
 }
