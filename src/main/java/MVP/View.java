@@ -11,15 +11,14 @@ import Observer.Observer;
  * @author kaios
  */
 public class View implements Observer {
-    
 
     public View() {
-        
+        //formulario e coisas botão
     }
 
     @Override
     public void update() {
-
+        // att a view
     }
 
   

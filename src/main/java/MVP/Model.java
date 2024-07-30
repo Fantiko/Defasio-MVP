@@ -10,20 +10,20 @@ import Observer.Observer;
  * @author kaios
  */
 public class Model implements Observer {
-//    private String data;
-//
-//    public String getData() {
-//        return data;
-//    }
-//
-//    public void setData(String data) {
-//        this.data = data;
-//        update();
-//    }
+    private String data;
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+        update();
+    }
+
 
     @Override
     public void update() {
-        System.out.println("att");
-
+        // att o model
     }
 }

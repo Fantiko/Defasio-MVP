@@ -3,12 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package lista_tarefas;
-import MVP.Model;
+import Observer.Observer;
+import Observer.Observer;
+
 /**
  *
  * @author kaios
  */
-public class Tarefa extends Model{
+public class Tarefa implements Observer {
     private String descricao;
     private boolean completo = false;
 
@@ -30,5 +32,11 @@ public class Tarefa extends Model{
 
     public void setCompleto(boolean completo) {
         this.completo = completo;
+    }
+
+
+    @Override
+    public void update() {
+
     }
 }

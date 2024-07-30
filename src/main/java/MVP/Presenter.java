@@ -11,16 +11,20 @@ import Observer.Observable;
  * @author kaios
  */
 public class Presenter extends Observable {
-   
-    public enum DataBiding
-    {
-        VIEW_MODEL,
+   Model model;
+   View view;
+
+    public enum DataBiding {
         MODEL_VIEW,
-        TWO_WAY
+        TWO_WAY,
+        VIEW_MODEL
+
     }
 
     public Presenter(Model model, View view, DataBiding dataBiding) {
-        
+        this.model = model;
+        this.view = view;
+
        switch(dataBiding){
            case VIEW_MODEL:
             {
@@ -38,5 +42,10 @@ public class Presenter extends Observable {
             }
         }
     }
+
+
+
+
+
 
 }
