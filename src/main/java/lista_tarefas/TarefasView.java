@@ -40,6 +40,7 @@ public class TarefasView implements Observer {
         System.out.println(message);
     }
 
+
     public void update(List<Tarefa> tarefas) {
         this.mostrarTarefas(tarefas);
     }

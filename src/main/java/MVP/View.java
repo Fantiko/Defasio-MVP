@@ -6,6 +6,9 @@ package MVP;
 
 import Observer.Observer;
 
+
+
+
 /**
  *
  * @author kaios
@@ -18,9 +21,6 @@ public class View implements Observer {
 
     @Override
     public void update() {
-        // att a view
+
     }
-
-  
-
 }

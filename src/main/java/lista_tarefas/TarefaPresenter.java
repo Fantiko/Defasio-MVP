@@ -16,8 +16,12 @@ import java.util.List;
  */
 public class TarefaPresenter extends Observable {
     private final List<Tarefa> tarefas = new ArrayList<>();
-    private final TarefasView view;
+    public final TarefasView view;
     private final DataBiding dataBiding;
+
+    public List<Tarefa> getarefas() {
+        return tarefas;
+    }
 
     public enum DataBiding {
         MODEL_VIEW,
@@ -48,14 +52,17 @@ public class TarefaPresenter extends Observable {
             switch (dataBiding) {
                 case VIEW_MODEL: {
                     this.addObserver(tarefas.getLast());
+                    break;
                 }
 
                 case MODEL_VIEW: {
                     this.view.update(this.tarefas);
+                    break;
                 }
                 case TWO_WAY: {
                     this.addObserver(tarefas.getLast());
                     this.view.update(this.tarefas);
+                    break;
                 }
 
 

@@ -4,6 +4,8 @@
  */
 package Observer;
 
+import lista_tarefas.Tarefa;
+
 import java.util.ArrayList;
 import java.util.List;
 
